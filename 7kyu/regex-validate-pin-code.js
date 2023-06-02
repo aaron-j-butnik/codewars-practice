@@ -8,20 +8,60 @@
 // "12345"  -->  false
 // "a234"   -->  false
 
-// My solution:
+// My solution using regex:
+
+function validatePIN(pin) {
+  return /^(\d{4}|\d{6})$/.test(pin);
+}
+
+// My (partial) solution without using regex:
 
 const validatePin = (pin) => {
   const pinLength = pin.length;
   const pinCorrectLength = pinLength === 4 || pinLength === 6;
-  const pinOnlyNumbers = pin.match(/^\d+$/);
+  const letters = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
 
-  if (pinCorrectLength && pinOnlyNumbers) {
+  if (pinCorrectLength) {
+    for (let i = 0; i < pin.length; i++) {
+      for (let j = 0; j < letters.length; j++) {
+        if (pin[i] === letters[j]) {
+          return false;
+        }
+      }
+    }
     return true;
   }
   return false;
 };
 
-const pin = "1556";
+const pin = "2223";
 const result = validatePin(pin);
 console.log(result);
 
