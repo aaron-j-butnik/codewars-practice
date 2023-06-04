@@ -17,7 +17,8 @@ function validatePIN(pin) {
 // My solution without using regex:
 
 const validatePin = (pin) => {
-  const pinLength = pin.length;
+  const pinStr = pin.toString();
+  const pinLength = pinStr.length;
   const pinCorrectLength = pinLength === 4 || pinLength === 6;
   const lettersAndSpChar = [
     "a",
@@ -75,7 +76,7 @@ const validatePin = (pin) => {
   ];
 
   if (pinCorrectLength) {
-    for (let i = 0; i < pin.length; i++) {
+    for (let i = 0; i < pinLength; i++) {
       for (let j = 0; j < lettersAndSpChar.length; j++) {
         if (pin[i] === lettersAndSpChar[j]) {
           return false;
@@ -87,7 +88,7 @@ const validatePin = (pin) => {
   return false;
 };
 
-const pin = "2224";
+const pin = 2333;
 const result = validatePin(pin);
 console.log(result);
 
