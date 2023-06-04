@@ -14,12 +14,12 @@ function validatePIN(pin) {
   return /^(\d{4}|\d{6})$/.test(pin);
 }
 
-// My (partial) solution without using regex:
+// My solution without using regex:
 
 const validatePin = (pin) => {
   const pinLength = pin.length;
   const pinCorrectLength = pinLength === 4 || pinLength === 6;
-  const letters = [
+  const lettersAndSpChar = [
     "a",
     "b",
     "c",
@@ -46,12 +46,38 @@ const validatePin = (pin) => {
     "x",
     "y",
     "z",
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "-",
+    "_",
+    "=",
+    "+",
+    ":",
+    "'",
+    '"',
+    "<",
+    ">",
+    ",",
+    ".",
+    "/",
+    "[",
+    "]",
+    "{",
+    "}",
   ];
 
   if (pinCorrectLength) {
     for (let i = 0; i < pin.length; i++) {
-      for (let j = 0; j < letters.length; j++) {
-        if (pin[i] === letters[j]) {
+      for (let j = 0; j < lettersAndSpChar.length; j++) {
+        if (pin[i] === lettersAndSpChar[j]) {
           return false;
         }
       }
@@ -61,7 +87,7 @@ const validatePin = (pin) => {
   return false;
 };
 
-const pin = "2223";
+const pin = "2224";
 const result = validatePin(pin);
 console.log(result);
 
