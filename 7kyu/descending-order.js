@@ -17,6 +17,6 @@ console.log(result);
 
 // CodeWars top solution:
 
-function descendingOrder(n) {
-  return parseInt(String(n).split("").sort().reverse().join(""));
-}
+// function descendingOrder(n) {
+//   return parseInt(String(n).split("").sort().reverse().join(""));
+// }
